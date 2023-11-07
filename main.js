@@ -80,8 +80,16 @@ function Clock(props) {
     React.useEffect(() => {
         tick();        
     }, []);
-    
+
     const [date, setDate] = React.useState(new Date());
+
+    const clickHandler=()=>{
+      const color = Math.floor(Math.random()*(256*256*256))
+      document.getElementsByTagName('h2')[0].style.color='#' + color.toString(16)
+    }
+    const resetHandler=()=>{
+      document.getElementsByTagName('h2')[0].style.color='black'
+    }
 
     const tick = () => {
         setInterval(() => {
@@ -94,12 +102,19 @@ function Clock(props) {
         <div>
             <h1>Hello world</h1>
             <h2>Il est {date.toLocaleTimeString()}.</h2>
+            <div>
+              <button onClick={clickHandler}></button>
+              <button onClick={resetHandler}></button>
+
+            </div>
         </div>
+        
         );
 }
+function Buttons(){
 
+}
 ReactDOM.render(<Clock />, document.querySelector('#app'));
-
 
 
 
