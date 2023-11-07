@@ -78,17 +78,21 @@ ReactDOM.render(<Clock />, document.querySelector('#app'));  */
 
 function Clock(props) {
     React.useEffect(() => {
-        tick();        
+        tick();   
+      return () =>{
+
+      }     
     }, []);
 
     const [date, setDate] = React.useState(new Date());
-
+    const intervalRef = React.useRef()
+    const [textColor , setTextColor] = React.useState('black')
     const clickHandler=()=>{
-      const color = Math.floor(Math.random()*(256*256*256))
-      document.getElementsByTagName('h2')[0].style.color='#' + color.toString(16)
+      const randomColor = (`#${Math.floor(Math.random()*(256*256*256)).toString(16)}`) 
+      setTextColor(randomColor)
     }
     const resetHandler=()=>{
-      document.getElementsByTagName('h2')[0].style.color='black'
+      setTextColor('black')
     }
 
     const tick = () => {
@@ -101,10 +105,10 @@ function Clock(props) {
     return (
         <div>
             <h1>Hello world</h1>
-            <h2>Il est {date.toLocaleTimeString()}.</h2>
+            <h2 style={{color:textColor}}>Il est {date.toLocaleTimeString()}.</h2>
             <div>
-              <button onClick={clickHandler}></button>
-              <button onClick={resetHandler}></button>
+              <button onClick={clickHandler}>Change Color</button>
+              <button onClick={resetHandler}>Reset Color</button>
 
             </div>
         </div>
@@ -115,7 +119,3 @@ function Buttons(){
 
 }
 ReactDOM.render(<Clock />, document.querySelector('#app'));
-
-
-
-
