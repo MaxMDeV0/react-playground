@@ -9,7 +9,7 @@ function Greeting(props) {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false)
   return <React.Fragment>
     {isLoggedIn? <GuestGreeting/>:<UserGreeting />}
-    <button onClick={()=>setIsLoggedIn(prevState=>!prevState)}>{isLoggedIn? 'Log in': 'Log out'}</button>
+    <button onClick={()=>setIsLoggedIn(prevState=>!prevState)}>{isLoggedIn? 'Se connecter': 'se déconnecter'}</button>
   </React.Fragment>
 }
 
