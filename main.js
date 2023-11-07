@@ -16,6 +16,7 @@ function App(props) {
                 <UserCard key={u.id} user={u}/>
             ))
         }
+        <EssayForm/>
         </React.Fragment>
     )
 }
@@ -35,7 +36,7 @@ function UserCard({user}) {
 }
 
 function NameForm (){
-    const [value, setValue] = useState('')
+    const [value, setValue] = React.useState('')
 
     const handleChange = (e)=>{
         setValue(e.target.value)
@@ -56,7 +57,7 @@ function NameForm (){
 
 
 function EssayForm (){
-    const [value, setValue] = useState('Écrivez un essai à propos de votre élément du DOM préféré')
+    const [value, setValue] = React.useState('Écrivez un essai à propos de votre élément du DOM préféré')
 
     const handleChange = (e)=>{
         setValue(e.target.value)
@@ -75,7 +76,7 @@ function EssayForm (){
     </form>
 }
 function FlavorForm (){
-    const [value, setValue] = useState('coconut')
+    const [value, setValue] = React.useState('coconut')
 
     const handleChange = (e)=>{
         setValue(e.target.value)
@@ -88,7 +89,7 @@ function FlavorForm (){
     return <form onSubmit={handleSumbit}>
         <label>
           Choisissez votre parfum favori :
-          <select value={this.state.value} onChange={this.handleChange}>
+          <select value={value} onChange={handleChange}>
             <option value="grapefruit">Pamplemousse</option>
             <option value="lime">Citron vert</option>
             <option value="coconut">Noix de coco</option>
